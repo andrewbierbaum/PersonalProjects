@@ -13,40 +13,29 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 #2 clearly written examples http://www.labri.fr/perso/nrougier/teaching/matplotlib/#animation
 
 import random
+import math
 import numpy as np
 import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.animation as manimation
+import matplotlib.animation as animation
 
 #setup the writer
-FFMpegWriter = manimation.writers['ffmpeg']
-metadata = dict(title='Movie Test', artist='Matplotlib', comment='Movie support!')
-writer = FFMpegWriter(fps=15, metadata=metadata)
+#FFMpegWriter = manimation.writers['ffmpeg']
+#metadata = dict(title='Movie Test', artist='Matplotlib', comment='Movie support!')
+#writer = FFMpegWriter(fps=15, metadata=metadata)
 fig = plt.figure()
 l, = plt.plot([], [], 'k-o')
 plt.xlim(0, 1)
 plt.ylim(0, 1)
 
-xpointsinside = []
-ypointsinside = []
-xpointsoutside = []
-ypointsoutside = []
-
-with writer.saving(fig, "MCC.mp4", 10):
-    for i in range(10):
-        x,y = random.random() 
-        if math.sqrt((x-0.5)*(x-0.5)+(y-0.5)*(y-0.5)) < 0.5:
-            xpointsinside.append(x)
-            ypointsinside.append(y)
-            plt.plot(xpointsinside,ypointsinside)
-        else:
-            xpointsoutside.append(x)
-            ypointsoutside.append(y)
-            plt.plot(xpointsoutside,ypointsoutside)
-
-        writer.grab_frame()
-        
+for i in range(1000):
+    x = random.random() 
+    y = random.random()
+    if math.sqrt((x-0.5)*(x-0.5)+(y-0.5)*(y-0.5)) < 0.5:
+        plt.plot(x,y, 'r.')
+    else:
+        plt.plot(x,y,'b.',anm)
+       
 plt.show()
 
 #anim = animation.FuncAnimation(fig,animation_frame,frames=100)
