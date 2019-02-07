@@ -24,18 +24,20 @@ import matplotlib.animation as animation
 #metadata = dict(title='Movie Test', artist='Matplotlib', comment='Movie support!')
 #writer = FFMpegWriter(fps=15, metadata=metadata)
 fig = plt.figure()
-l, = plt.plot([], [], 'k-o')
 plt.xlim(0, 1)
 plt.ylim(0, 1)
 
+#def animate(i):
 for i in range(1000):
     x = random.random() 
     y = random.random()
     if math.sqrt((x-0.5)*(x-0.5)+(y-0.5)*(y-0.5)) < 0.5:
-        plt.plot(x,y, 'r.')
+        plt.plot(x,y, 'r.',animated=True)
     else:
-        plt.plot(x,y,'b.',anm)
+        plt.plot(x,y,'b.',animated=True)
        
+#ani = animation.FuncAnimation(fig, animate, range(1, len(y)),interval=dt*1000, blit=True, init_func=init)
+
 plt.show()
 
 #anim = animation.FuncAnimation(fig,animation_frame,frames=100)
