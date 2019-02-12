@@ -35,7 +35,7 @@ def update(t):
     ax[1].plot(t,pi,'k.')
     ax[1].set_title('approimate Pi = {:.4f}'.format(pi))
 
-
-ani = animation.FuncAnimation(fig, update, interval = 1,  frames=1000, save_count=1000)
-ani.save('MonteCarloCircle.mp4',fps=60)
+#there are issues if the number of frames got to 1000
+ani = animation.FuncAnimation(fig, update, interval = 1,  frames=300, save_count=300)
+ani.save('MonteCarloCircle.mp4',fps=30)
 #plt.show()
