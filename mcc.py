@@ -1,7 +1,3 @@
-#todo: speed improvement using ffmpeg writter
-#lines between points
-#multiple passes
-#faster with blitting https://learn.sparkfun.com/tutorials/graph-sensor-data-with-python-and-matplotlib/speeding-up-the-plot-animation
 
 
 import numpy as np
@@ -40,5 +36,6 @@ def update(t):
     ax[1].set_title('approimate Pi = {:.4f}'.format(pi))
 
 
-ani = animation.FuncAnimation(fig, update, interval = 1,  frames=1000)
-plt.show()
+ani = animation.FuncAnimation(fig, update, interval = 1,  frames=1000, save_count=1000)
+ani.save('MonteCarloCircle.mp4',fps=60)
+#plt.show()
